@@ -1,7 +1,7 @@
 
 const Koa = require('koa');
 const uidGenerator = require('node-unique-id-generator')
-const cors = require('@koa/cors');
+const cors = require('koa-cors');
 const koaBody = require('koa-body');
 
 const app = new Koa;
@@ -33,6 +33,9 @@ const tickets = [{
 ];
 
 app.use(async ctx => {
+  ctx.response.set({
+    'Access-Control-Allow-Origin': '*',
+  })
   const {method, id} = ctx.request.query;
   switch (method) {
     case 'allTickets':

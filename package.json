@@ -20,7 +20,7 @@
   "dependencies": {
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
-    "@koa/cors": "^3.1.0",
+    "koa-cors": "0.0.16",
     "node-unique-id-generator": "^0.1.0"
   },
   "devDependencies": {
