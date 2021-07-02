@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "npm install",
-    "dev-server": "forever app.js",
-    "dev-server-watch": "forever -w app.js"
+    "start": "forever app.js",
+    "start-watch": "forever -w app.js"
   },
   "repository": {
     "type": "git",
