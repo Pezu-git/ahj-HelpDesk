@@ -53,6 +53,22 @@ app.use(async ctx => {
       tickets.push(newTicket);
       ctx.response.body = [newTicket]
       return;
+    case 'deleteById':
+      const deleteIdx = tickets.findIndex(ticket => ticket.id === id)
+      tickets.splice(deleteIdx, 1)
+      ctx.response.body = tickets;
+      return;
+    case 'updateById':
+      const updateIdx = tickets.findIndex(ticket => ticket.id === id);
+      const updateData = JSON.parse(ctx.request.body)
+      const ticket = {
+        ...tickets[updateIdx],
+        ...updateData
+      }
+      tickets.splice(updateIdx, 1);
+      tickets.splice(updateIdx, 0, ticket);
+      ctx.response.body = tickets;
+      return;
     default:
       ctx.response.status = 404;
       return;
@@ -64,12 +80,12 @@ app.use(async ctx => {
 
 
 
-const server = http.createServer(app.callback());
-const port = process.env.PORT || 8888;
+// const server = http.createServer(app.callback());
+// const port = process.env.PORT || 5000;
 
-server.listen(port, err => {
-  if (err) {
-    return;
-  }
-  console.log(`listening on ${port} port`)
-})
+// server.listen(port, err => {
+//   if (err) {
+//     return;
+//   }
+//   console.log(`listening on ${port} port`)
+// })
