@@ -74,6 +74,8 @@ app.use(async ctx => {
       return;
   }
 });
+
+module.exports = app;
 //     // console.log(uidGenerator.generateUniqueId())
 //     // ctx.response.body = 'It Works, asshole!';
 //   });
