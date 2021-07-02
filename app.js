@@ -1,7 +1,7 @@
-const http = require('http');
+
 const Koa = require('koa');
 const uidGenerator = require('node-unique-id-generator')
-const cors = require('koa-cors');
+const cors = require('@koa/cors');
 const koaBody = require('koa-body');
 
 const app = new Koa;
@@ -76,18 +76,3 @@ app.use(async ctx => {
 });
 
 module.exports = app;
-//     // console.log(uidGenerator.generateUniqueId())
-//     // ctx.response.body = 'It Works, asshole!';
-//   });
-
-
-
-// const server = http.createServer(app.callback());
-// const port = process.env.PORT || 5000;
-
-// server.listen(port, err => {
-//   if (err) {
-//     return;
-//   }
-//   console.log(`listening on ${port} port`)
-// })
