@@ -1,0 +1,31 @@
+{
+  "name": "ahj-helpdesk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "dev-server": "forever app.js",
+    "dev-server-watch": "forever -w app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pezu-git/ahj-HelpDesk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pezu-git/ahj-HelpDesk/issues"
+  },
+  "homepage": "https://github.com/Pezu-git/ahj-HelpDesk#readme",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-cors": "0.0.16",
+    "node-unique-id-generator": "^0.1.0"
+  },
+  "devDependencies": {
+    "forever": "^4.0.1"
+  }
+}
