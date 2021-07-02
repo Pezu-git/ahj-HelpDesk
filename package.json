@@ -1,29 +1,34 @@
 {
-  "name": "ahj-helpdesk",
+  "name": "ahj-helpdesk-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.16.1",
+    "npm": "6.14.12"
+  },
   "scripts": {
-    "start": "forever index.js",
-    "start-watch": "forever -w index.js"
+    "start": "node index",
+    "start:dev": "nodemon index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pezu-git/ahj-HelpDesk.git"
+    "url": "git+https://github.com/theart84/ahj-helpdesk-backend.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pezu-git/ahj-HelpDesk/issues"
+    "url": "https://github.com/theart84/ahj-helpdesk-backend/issues"
   },
-  "homepage": "https://github.com/Pezu-git/ahj-HelpDesk#readme",
+  "homepage": "https://github.com/theart84/ahj-helpdesk-backend#readme",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
-    "koa-cors": "0.0.16",
     "node-unique-id-generator": "^0.1.0"
   },
   "devDependencies": {
-    "forever": "^4.0.1"
+    "nodemon": "^2.0.7"
   }
 }
