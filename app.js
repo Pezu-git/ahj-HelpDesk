@@ -31,47 +31,33 @@ const tickets = [{
   }
 ];
 
-app.use(async ctx => {
-  const {method, id} = ctx.request.query;
-  switch (method) {
-    case 'allTickets':
-      ctx.response.body = tickets;
-      return;
-    case 'ticketById':
-      ctx.response.body = tickets.find(ticket => ticket.id === id)
-      return;
-    case 'createTicket':
-      const createData = JSON.parse(ctx.request.body)
-      const newTicket = {
-        id: idGenerator.generateGUID(),
-        name: createData.name,
-        status: false,
-        description: createData.description || '',
-        created: Date.now()
-      };
-      tickets.push(newTicket);
-      ctx.response.body = [newTicket]
-      return;
-    case 'deleteById':
-      const deleteIdx = tickets.findIndex(ticket => ticket.id === id)
-      tickets.splice(deleteIdx, 1)
-      ctx.response.body = tickets;
-      return;
-    case 'updateById':
-      const updateIdx = tickets.findIndex(ticket => ticket.id === id);
-      const updateData = JSON.parse(ctx.request.body)
-      const ticket = {
-        ...tickets[updateIdx],
-        ...updateData
-      }
-      tickets.splice(updateIdx, 1);
-      tickets.splice(updateIdx, 0, ticket);
-      ctx.response.body = tickets;
-      return;
-    default:
-      ctx.response.status = 404;
-      return;
-  }
+app.use(async (ctx) => {
+let method;
+if (ctx.request.method === 'GET') ({ method } = ctx.request.query);
+else if (ctx.request.method === 'POST') ({ method } = ctx.request.body);
+const response = {
+success: true,
+data: '',
+};
+switch (method) {
+  case 'allTickets': response.data = ticketsList.getTickets();
+    break;
+  case 'ticketById': response.data = ticketsList.getTicketFull(ctx.request.query);
+    break;
+  case 'createTicket': response.data = ticketsList.createTicket(ctx.request.body);
+    break;
+  case 'changeStatus': response.data = ticketsList.changeStatus(ctx.request.body);
+    break;
+  case 'updateTicket': response.data = ticketsList.updateTicket(ctx.request.body);
+    break;
+  case 'deleteTicket': response.data = ticketsList.deleteTicket(ctx.request.body);
+    break;
+default:
+  response.success = false;
+  response.data = `Unknown method '${method}' in request parameters`;
+}
+ctx.body = JSON.stringify(response);
 });
+
 
 module.exports = app;
