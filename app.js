@@ -41,6 +41,8 @@ class TicketList {
   }
 }
 
+const ticketsList = new TicketList()
+
 //   getTicketFull() {
 //     ctx.response.body = tickets.find(ticket => ticket.id === id)
 //   }
